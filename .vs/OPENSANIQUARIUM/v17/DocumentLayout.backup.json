@@ -1,0 +1,138 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dmwev\\Documents\\Godot\\Opensaniquarium\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|c:\\users\\dmwev\\documents\\godot\\opensaniquarium\\fish\\fish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|solutionrelative:fish\\fish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|c:\\users\\dmwev\\documents\\godot\\opensaniquarium\\fish\\guppy\\smallguppy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|solutionrelative:fish\\guppy\\smallguppy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|c:\\users\\dmwev\\documents\\godot\\opensaniquarium\\fish\\guppy\\guppy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|solutionrelative:fish\\guppy\\guppy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|c:\\users\\dmwev\\documents\\godot\\opensaniquarium\\fish\\hungertimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|solutionrelative:fish\\hungertimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|c:\\users\\dmwev\\documents\\godot\\opensaniquarium\\fishfood\\fishfood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|solutionrelative:fishfood\\fishfood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dmwev\\AppData\\Local\\Temp\\.vsdbgsrc\\2e6d60980cdf79300c8dde812d21013dd5089aa55e461e5f27cb0ddbe6dae030\\CSharpInstanceBridge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|c:\\users\\dmwev\\documents\\godot\\opensaniquarium\\opensaniquarium.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1AD4A8F7-BFE1-4526-95C2-48B799C481BF}|Opensaniquarium.csproj|solutionrelative:opensaniquarium.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CSharpInstanceBridge.cs",
+              "DocumentMoniker": "C:\\Users\\dmwev\\AppData\\Local\\Temp\\.vsdbgsrc\\2e6d60980cdf79300c8dde812d21013dd5089aa55e461e5f27cb0ddbe6dae030\\CSharpInstanceBridge.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\2e6d60980cdf79300c8dde812d21013dd5089aa55e461e5f27cb0ddbe6dae030\\CSharpInstanceBridge.cs",
+              "ToolTip": "C:\\Users\\dmwev\\AppData\\Local\\Temp\\.vsdbgsrc\\2e6d60980cdf79300c8dde812d21013dd5089aa55e461e5f27cb0ddbe6dae030\\CSharpInstanceBridge.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\2e6d60980cdf79300c8dde812d21013dd5089aa55e461e5f27cb0ddbe6dae030\\CSharpInstanceBridge.cs [Read Only]",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAQwB0AAAACAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T19:55:37.87Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Guppy.cs",
+              "DocumentMoniker": "C:\\Users\\dmwev\\Documents\\Godot\\Opensaniquarium\\Fish\\Guppy\\Guppy.cs",
+              "RelativeDocumentMoniker": "Fish\\Guppy\\Guppy.cs",
+              "ToolTip": "C:\\Users\\dmwev\\Documents\\Godot\\Opensaniquarium\\Fish\\Guppy\\Guppy.cs",
+              "RelativeToolTip": "Fish\\Guppy\\Guppy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T19:39:19.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FishFood.cs",
+              "DocumentMoniker": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\FishFood\\FishFood.cs",
+              "RelativeDocumentMoniker": "FishFood\\FishFood.cs",
+              "ToolTip": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\FishFood\\FishFood.cs",
+              "RelativeToolTip": "FishFood\\FishFood.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T00:29:24.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HungerTimer.cs",
+              "DocumentMoniker": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\Fish\\HungerTimer.cs",
+              "RelativeDocumentMoniker": "Fish\\HungerTimer.cs",
+              "ToolTip": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\Fish\\HungerTimer.cs",
+              "RelativeToolTip": "Fish\\HungerTimer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T22:42:50.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Opensaniquarium.csproj",
+              "DocumentMoniker": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\Opensaniquarium.csproj",
+              "RelativeDocumentMoniker": "Opensaniquarium.csproj",
+              "ToolTip": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\Opensaniquarium.csproj",
+              "RelativeToolTip": "Opensaniquarium.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-16T22:30:38.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Fish.cs",
+              "DocumentMoniker": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\Fish\\Fish.cs",
+              "RelativeDocumentMoniker": "Fish\\Fish.cs",
+              "ToolTip": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\Fish\\Fish.cs",
+              "RelativeToolTip": "Fish\\Fish.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T21:22:03.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SmallGuppy.cs",
+              "DocumentMoniker": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\Fish\\Guppy\\SmallGuppy.cs",
+              "RelativeDocumentMoniker": "Fish\\Guppy\\SmallGuppy.cs",
+              "ToolTip": "C:\\USERS\\DMWEV\\DOCUMENTS\\GODOT\\OPENSANIQUARIUM\\Fish\\Guppy\\SmallGuppy.cs",
+              "RelativeToolTip": "Fish\\Guppy\\SmallGuppy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T14:24:33.659Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

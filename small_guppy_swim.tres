@@ -1,0 +1,70 @@
+[gd_resource type="ShaderMaterial" load_steps=14 format=3 uid="uid://bccnh0avg2bdu"]
+
+[ext_resource type="Shader" path="res://Guppy.gdshader" id="1_7syx3"]
+[ext_resource type="Texture2D" uid="uid://dw5m6o34qv58o" path="res://img/smallswim_.jpg" id="2_opw23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32bre"]
+atlas = ExtResource("2_opw23")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8kvt"]
+atlas = ExtResource("2_opw23")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnom7"]
+atlas = ExtResource("2_opw23")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44lfu"]
+atlas = ExtResource("2_opw23")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15nxx"]
+atlas = ExtResource("2_opw23")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s53m5"]
+atlas = ExtResource("2_opw23")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqk07"]
+atlas = ExtResource("2_opw23")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bi2j"]
+atlas = ExtResource("2_opw23")
+region = Rect2(640, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw4bc"]
+atlas = ExtResource("2_opw23")
+region = Rect2(720, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prlyn"]
+atlas = ExtResource("2_opw23")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_jpga1"]
+frames = 10
+frame_0/texture = SubResource("AtlasTexture_32bre")
+frame_1/texture = SubResource("AtlasTexture_m8kvt")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("AtlasTexture_jnom7")
+frame_2/duration = 1.0
+frame_3/texture = SubResource("AtlasTexture_44lfu")
+frame_3/duration = 1.0
+frame_4/texture = SubResource("AtlasTexture_15nxx")
+frame_4/duration = 1.0
+frame_5/texture = SubResource("AtlasTexture_s53m5")
+frame_5/duration = 1.0
+frame_6/texture = SubResource("AtlasTexture_uqk07")
+frame_6/duration = 1.0
+frame_7/texture = SubResource("AtlasTexture_4bi2j")
+frame_7/duration = 1.0
+frame_8/texture = SubResource("AtlasTexture_kw4bc")
+frame_8/duration = 1.0
+frame_9/texture = SubResource("AtlasTexture_prlyn")
+frame_9/duration = 1.0
+
+[resource]
+shader = ExtResource("1_7syx3")
+shader_parameter/mask = SubResource("AnimatedTexture_jpga1")

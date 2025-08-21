@@ -1,0 +1,105 @@
+[gd_scene load_steps=17 format=3 uid="uid://cvb5nsywjj0bl"]
+
+[ext_resource type="Shader" path="res://Opensaniquarium.gdshader" id="1_8rntl"]
+[ext_resource type="Texture2D" uid="uid://b27paseo5elp4" path="res://img/smallswim.png" id="2_ga7ph"]
+[ext_resource type="Script" path="res://SmallMove.gd" id="3_wo1mb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knkdo"]
+shader = ExtResource("1_8rntl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o04ec"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d66sm"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t3p4"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud2md"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvrki"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldr1g"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw6ef"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nm62"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h02a6"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(640, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_242qy"]
+atlas = ExtResource("2_ga7ph")
+region = Rect2(720, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_voi3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o04ec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d66sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t3p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud2md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvrki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldr1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw6ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nm62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h02a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_242qy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4tvs"]
+radius = 9.0
+height = 24.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GuppySmall" type="CharacterBody2D" parent="."]
+
+[node name="SmallMove" type="AnimatedSprite2D" parent="GuppySmall"]
+material = SubResource("ShaderMaterial_knkdo")
+sprite_frames = SubResource("SpriteFrames_voi3d")
+frame_progress = 0.741459
+script = ExtResource("3_wo1mb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GuppySmall"]
+position = Vector2(-5, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_m4tvs")

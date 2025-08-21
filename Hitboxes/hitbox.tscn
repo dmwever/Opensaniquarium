@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dduvuet7m8r41"]
+
+[node name="Hitbox" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0

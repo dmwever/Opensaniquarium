@@ -1,0 +1,215 @@
+[gd_scene load_steps=21 format=3 uid="uid://bqblw2bmjq8yk"]
+
+[ext_resource type="Script" path="res://Fish/Guppy/Guppy.gd" id="1_ts5h6"]
+[ext_resource type="Shader" path="res://Guppy.gdshader" id="2_c3eog"]
+[ext_resource type="Texture2D" uid="uid://dw5m6o34qv58o" path="res://img/smallswim_.jpg" id="3_dyiri"]
+[ext_resource type="Texture2D" uid="uid://c4d6rtytu5gr5" path="res://Fish/Guppy/swim.tres" id="4_q84g6"]
+[ext_resource type="Texture2D" uid="uid://bcgl5ba161s7y" path="res://img/smallturn_.jpg" id="5_54s40"]
+[ext_resource type="Texture2D" uid="uid://byuv63u7erh5s" path="res://Fish/Guppy/turn.tres" id="6_rensc"]
+[ext_resource type="Script" path="res://Fish/MultispriteFishimationPlayer.gd" id="7_ivrwb"]
+[ext_resource type="Script" path="res://Fish/Guppy/HungerTimer.gd" id="7_xnxa1"]
+
+[sub_resource type="Animation" id="Animation_okc4n"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_x7f7y"]
+resource_name = "swim"
+length = 0.8
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Swim:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pqoco"]
+resource_name = "swim_king"
+length = 0.8
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Swim:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(6, 3), Vector2i(7, 3), Vector2i(8, 3), Vector2i(9, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_57x3e"]
+resource_name = "swim_large"
+length = 0.8
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Swim:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2), Vector2i(7, 2), Vector2i(8, 2), Vector2i(9, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_pcvu2"]
+resource_name = "swim_medium"
+length = 0.8
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Swim:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1), Vector2i(8, 1), Vector2i(9, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rc5du"]
+resource_name = "turn"
+length = 0.4
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6q7kn"]
+resource_name = "turn_king"
+length = 0.4
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(6, 3), Vector2i(7, 3), Vector2i(8, 3), Vector2i(9, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_4memu"]
+resource_name = "turn_large"
+length = 0.4
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2), Vector2i(7, 2), Vector2i(8, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_nlkek"]
+resource_name = "turn_medium"
+length = 0.4
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1), Vector2i(8, 1), Vector2i(9, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okdpk"]
+_data = {
+"RESET": SubResource("Animation_okc4n"),
+"swim": SubResource("Animation_x7f7y"),
+"swim_king": SubResource("Animation_pqoco"),
+"swim_large": SubResource("Animation_57x3e"),
+"swim_medium": SubResource("Animation_pcvu2"),
+"turn": SubResource("Animation_rc5du"),
+"turn_king": SubResource("Animation_6q7kn"),
+"turn_large": SubResource("Animation_4memu"),
+"turn_medium": SubResource("Animation_nlkek")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugsgk"]
+shader = ExtResource("2_c3eog")
+shader_parameter/mask = ExtResource("3_dyiri")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcanx"]
+shader = ExtResource("2_c3eog")
+shader_parameter/mask = ExtResource("5_54s40")
+
+[node name="Guppy" type="CharacterBody2D"]
+script = ExtResource("1_ts5h6")
+
+[node name="MultispriteFishimationPlayerAnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
+libraries = {
+"": SubResource("AnimationLibrary_okdpk")
+}
+script = ExtResource("7_ivrwb")
+
+[node name="HungerTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = ExtResource("7_xnxa1")
+
+[node name="IdleTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="Swim" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ugsgk")
+position = Vector2(216, 141)
+texture = ExtResource("4_q84g6")
+hframes = 10
+vframes = 5
+
+[node name="Turn" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_gcanx")
+position = Vector2(215, 141)
+texture = ExtResource("6_rensc")
+hframes = 10
+vframes = 5
+frame = 9
+
+[connection signal="animation_finished" from="MultispriteFishimationPlayerAnimationPlayer" to="." method="_on_guppy_animation_player_animation_finished"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

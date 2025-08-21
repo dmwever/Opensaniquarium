@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp8v0d3y43lre"]
+
+[ext_resource type="Texture2D" uid="uid://dyss36imqllox" path="res://img/aquarium1.jpg" id="1_hgikc"]
+[ext_resource type="Texture2D" uid="uid://cxd4qt5rfmxk3" path="res://img/menubar.jpg" id="2_avx82"]
+[ext_resource type="PackedScene" uid="uid://benojx2dma4w2" path="res://fish_food.tscn" id="4_ipvwg"]
+[ext_resource type="PackedScene" uid="uid://bqblw2bmjq8yk" path="res://Fish/Guppy/Guppy.tscn" id="4_pfb2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfts2"]
+size = Vector2(642, 52)
+
+[node name="Tank" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 640.0
+offset_bottom = 480.0
+texture = ExtResource("1_hgikc")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_right = 297.0
+offset_bottom = 114.0
+texture = ExtResource("2_avx82")
+
+[node name="FishFood" parent="." instance=ExtResource("4_ipvwg")]
+position = Vector2(-8, 61)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(320, 454)
+shape = SubResource("RectangleShape2D_jfts2")
+
+[node name="Guppy" parent="." instance=ExtResource("4_pfb2w")]

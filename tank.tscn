@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp8v0d3y43lre"]
+[gd_scene load_steps=5 format=3 uid="uid://cp8v0d3y43lre"]
 
 [ext_resource type="Texture2D" uid="uid://dyss36imqllox" path="res://img/aquarium1.jpg" id="1_hgikc"]
 [ext_resource type="Texture2D" uid="uid://cxd4qt5rfmxk3" path="res://img/menubar.jpg" id="2_avx82"]
 [ext_resource type="PackedScene" uid="uid://benojx2dma4w2" path="res://FishFood/fish_food.tscn" id="4_ipvwg"]
 [ext_resource type="PackedScene" uid="uid://ise50bjb83lg" path="res://Fish/Guppy/Guppy.tscn" id="4_pfb2w"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfts2"]
-size = Vector2(642, 52)
 
 [node name="Tank" type="Node2D"]
 
@@ -25,11 +22,12 @@ texture = ExtResource("2_avx82")
 position = Vector2(318, 274)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 33
+collision_layer = 11
+collision_mask = 15
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(320, 454)
-shape = SubResource("RectangleShape2D_jfts2")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(24, 120, 616, 120, 616, 432, 24, 432)
 
 [node name="Guppy" parent="." instance=ExtResource("4_pfb2w")]
 position = Vector2(280, 269)

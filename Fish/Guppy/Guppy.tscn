@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bqblw2bmjq8yk"]
+[gd_scene load_steps=26 format=3 uid="uid://ise50bjb83lg"]
 
 [ext_resource type="Script" path="res://Fish/Guppy/Guppy.gd" id="1_ts5h6"]
 [ext_resource type="Shader" path="res://Guppy.gdshader" id="2_c3eog"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://byuv63u7erh5s" path="res://Fish/Guppy/turn.tres" id="6_rensc"]
 [ext_resource type="Script" path="res://Fish/MultispriteFishimationPlayer.gd" id="7_ivrwb"]
 [ext_resource type="Script" path="res://Fish/Guppy/HungerTimer.gd" id="7_xnxa1"]
+[ext_resource type="PackedScene" uid="uid://mqek1b7bqwit" path="res://Hitboxes/hurtbox.tscn" id="9_b8aev"]
+[ext_resource type="Script" path="res://Behaviors/BehaviorTree.gd" id="10_gj3v7"]
+[ext_resource type="Script" path="res://Behaviors/Idle.gd" id="11_kbpkc"]
+[ext_resource type="Script" path="res://Behaviors/Turn.gd" id="12_v0ge2"]
 
 [sub_resource type="Animation" id="Animation_okc4n"]
 length = 0.001
@@ -173,15 +177,22 @@ shader_parameter/mask = ExtResource("3_dyiri")
 shader = ExtResource("2_c3eog")
 shader_parameter/mask = ExtResource("5_54s40")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kljvb"]
+radius = 17.1172
+
 [node name="Guppy" type="CharacterBody2D"]
 script = ExtResource("1_ts5h6")
 
-[node name="MultispriteFishimationPlayerAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="GuppyAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("swim_sprite", "turn_sprite")]
 deterministic = true
 libraries = {
 "": SubResource("AnimationLibrary_okdpk")
 }
 script = ExtResource("7_ivrwb")
+swim_sprite = NodePath("../Swim")
+turn_sprite = NodePath("../Turn")
+swim_animation = "swim"
+turn_animation = "turn"
 
 [node name="HungerTimer" type="Timer" parent="."]
 process_callback = 0
@@ -190,26 +201,38 @@ one_shot = true
 autostart = true
 script = ExtResource("7_xnxa1")
 
-[node name="IdleTimer" type="Timer" parent="."]
-process_callback = 0
-one_shot = true
-
 [node name="Swim" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_ugsgk")
-position = Vector2(216, 141)
+position = Vector2(1, -1)
 texture = ExtResource("4_q84g6")
 hframes = 10
 vframes = 5
 
 [node name="Turn" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_gcanx")
-position = Vector2(215, 141)
 texture = ExtResource("6_rensc")
 hframes = 10
 vframes = 5
 frame = 9
 
-[connection signal="animation_finished" from="MultispriteFishimationPlayerAnimationPlayer" to="." method="_on_guppy_animation_player_animation_finished"]
-[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[node name="Hurtbox" parent="." instance=ExtResource("9_b8aev")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_kljvb")
+
+[node name="BehaviorTree" type="Node" parent="." node_paths=PackedStringArray("initial_behavior")]
+script = ExtResource("10_gj3v7")
+initial_behavior = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("11_kbpkc")
+character = NodePath("../..")
+animationPlayer = NodePath("../../GuppyAnimationPlayer")
+
+[node name="Turn" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("12_v0ge2")
+animationPlayer = NodePath("../../GuppyAnimationPlayer")
+
+[connection signal="animation_finished" from="GuppyAnimationPlayer" to="BehaviorTree/Turn" method="_on_guppy_animation_player_animation_finished"]
+
+[editable path="Hurtbox"]

@@ -1,12 +1,11 @@
 extends AnimationPlayer
 class_name MultispriteFishimationPlayer
 
-@onready var swim_sprite: Sprite2D = $"../Swim"
-@onready var turn_sprite: Sprite2D = $"../Turn"
-@onready var fish: Guppy = $".."
+@export var swim_sprite: Sprite2D
+@export var turn_sprite: Sprite2D
 
-var swim_animation: String = "swim"
-var turn_animation: String = "turn"
+@export var swim_animation: String
+@export var turn_animation: String
 
 var sprites: Array[Sprite2D] = []
 # Called when the node enters the scene tree for the first time.
@@ -15,28 +14,26 @@ func _ready():
 		swim_sprite,
 		turn_sprite
 	]
-	activate_sprite("../Swim")
+	activate_sprite(swim_sprite)
 	play(swim_animation)
 
-func activate_sprite(nodePath: NodePath) -> void:
-	var node = get_node(nodePath)
-	assert(node != null)
-	assert(node in sprites)
+func activate_sprite(new_sprite: Sprite2D) -> void:
+	assert(new_sprite != null)
+	assert(new_sprite in sprites)
 	for sprite in sprites:
-		sprite.visible = sprite == node
+		sprite.visible = sprite == new_sprite
 
-func check_turn()-> bool:
-	if ((fish.is_moving_left() && swim_sprite.flip_h)
-	|| (!fish.is_moving_left() && !swim_sprite.flip_h)):
+func facing_left()-> bool:
+	if !swim_sprite.flip_h:
 		return true
 	return false
 
 func turn():
-	activate_sprite("../Turn")
+	activate_sprite(turn_sprite)
 	play(turn_animation)
 	
 func end_turn():
 	for sprite in sprites:
 		sprite.flip_h = !sprite.flip_h
-	activate_sprite("../Swim")
+	activate_sprite(swim_sprite)
 	play(swim_animation)

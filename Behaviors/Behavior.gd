@@ -1,13 +1,13 @@
 extends Node
 class_name Behavior
 
-signal transitioned
-signal transitioned_callback
+signal transition
+signal transition_callback
 
 func enter():
 	pass
 	
-func enter_callback(behavior_name: String):
+func enter_callback(_behavior_name: String):
 	pass
 
 func exit():

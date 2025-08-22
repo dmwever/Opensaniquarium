@@ -1,17 +1,21 @@
-[gd_scene load_steps=26 format=3 uid="uid://ise50bjb83lg"]
+[gd_scene load_steps=30 format=3 uid="uid://ise50bjb83lg"]
 
-[ext_resource type="Script" path="res://Fish/Guppy/Guppy.gd" id="1_ts5h6"]
+[ext_resource type="Script" path="res://Fish/Fish.gd" id="1_ts5h6"]
 [ext_resource type="Shader" path="res://Guppy.gdshader" id="2_c3eog"]
 [ext_resource type="Texture2D" uid="uid://dw5m6o34qv58o" path="res://img/smallswim_.jpg" id="3_dyiri"]
-[ext_resource type="Texture2D" uid="uid://c4d6rtytu5gr5" path="res://Fish/Guppy/swim.tres" id="4_q84g6"]
 [ext_resource type="Texture2D" uid="uid://bcgl5ba161s7y" path="res://img/smallturn_.jpg" id="5_54s40"]
-[ext_resource type="Texture2D" uid="uid://byuv63u7erh5s" path="res://Fish/Guppy/turn.tres" id="6_rensc"]
+[ext_resource type="Texture2D" uid="uid://dppjr0ji3o248" path="res://img/smallswim.jpg" id="6_e006e"]
 [ext_resource type="Script" path="res://Fish/MultispriteFishimationPlayer.gd" id="7_ivrwb"]
-[ext_resource type="Script" path="res://Fish/Guppy/HungerTimer.gd" id="7_xnxa1"]
+[ext_resource type="Script" path="res://Sprites/HungerSprite.gd" id="7_wu202"]
+[ext_resource type="Script" path="res://Fish/HungerTimer.gd" id="7_xnxa1"]
+[ext_resource type="Texture2D" uid="uid://bai0drdfqeqgg" path="res://img/hungryswim.jpg" id="8_bfltb"]
 [ext_resource type="PackedScene" uid="uid://mqek1b7bqwit" path="res://Hitboxes/hurtbox.tscn" id="9_b8aev"]
+[ext_resource type="Texture2D" uid="uid://cghk8kvuqb61e" path="res://img/smallturn.jpg" id="10_1330p"]
 [ext_resource type="Script" path="res://Behaviors/BehaviorTree.gd" id="10_gj3v7"]
+[ext_resource type="Texture2D" uid="uid://pjl36efqsg76" path="res://img/hungryturn.jpg" id="11_2fl01"]
 [ext_resource type="Script" path="res://Behaviors/Idle.gd" id="11_kbpkc"]
 [ext_resource type="Script" path="res://Behaviors/Turn.gd" id="12_v0ge2"]
+[ext_resource type="Script" path="res://Behaviors/Wander.gd" id="13_hdsmo"]
 
 [sub_resource type="Animation" id="Animation_okc4n"]
 length = 0.001
@@ -180,8 +184,9 @@ shader_parameter/mask = ExtResource("5_54s40")
 [sub_resource type="CircleShape2D" id="CircleShape2D_kljvb"]
 radius = 17.1172
 
-[node name="Guppy" type="CharacterBody2D"]
+[node name="Guppy" type="CharacterBody2D" node_paths=PackedStringArray("behavior_tree")]
 script = ExtResource("1_ts5h6")
+behavior_tree = NodePath("BehaviorTree")
 
 [node name="GuppyAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("swim_sprite", "turn_sprite")]
 deterministic = true
@@ -204,16 +209,22 @@ script = ExtResource("7_xnxa1")
 [node name="Swim" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ugsgk")
 position = Vector2(1, -1)
-texture = ExtResource("4_q84g6")
+texture = ExtResource("6_e006e")
 hframes = 10
 vframes = 5
+script = ExtResource("7_wu202")
+hunger_sprite_img = ExtResource("8_bfltb")
+satisfied_sprite_img = ExtResource("6_e006e")
 
 [node name="Turn" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_gcanx")
-texture = ExtResource("6_rensc")
+texture = ExtResource("10_1330p")
 hframes = 10
 vframes = 5
 frame = 9
+script = ExtResource("7_wu202")
+hunger_sprite_img = ExtResource("11_2fl01")
+satisfied_sprite_img = ExtResource("10_1330p")
 
 [node name="Hurtbox" parent="." instance=ExtResource("9_b8aev")]
 
@@ -231,6 +242,11 @@ animationPlayer = NodePath("../../GuppyAnimationPlayer")
 
 [node name="Turn" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("12_v0ge2")
+animationPlayer = NodePath("../../GuppyAnimationPlayer")
+
+[node name="Wander" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("13_hdsmo")
+character = NodePath("../..")
 animationPlayer = NodePath("../../GuppyAnimationPlayer")
 
 [connection signal="animation_finished" from="GuppyAnimationPlayer" to="BehaviorTree/Turn" method="_on_guppy_animation_player_animation_finished"]

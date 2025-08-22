@@ -16,6 +16,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	move_and_slide()
+	if hunger_timer.check_hunger() == Util.HungerState.HUNGRY or hunger_timer.check_hunger() == Util.HungerState.STARVED:
+		fishimation_player.make_hungry()
+	else:
+		fishimation_player.satisfy()
 
 
 

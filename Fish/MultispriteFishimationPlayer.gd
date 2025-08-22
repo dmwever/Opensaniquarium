@@ -1,8 +1,8 @@
 extends AnimationPlayer
 class_name MultispriteFishimationPlayer
 
-@export var swim_sprite: Sprite2D
-@export var turn_sprite: Sprite2D
+@export var swim_sprite: HungerSprite
+@export var turn_sprite: HungerSprite
 
 @export var swim_animation: String
 @export var turn_animation: String
@@ -37,3 +37,13 @@ func end_turn():
 		sprite.flip_h = !sprite.flip_h
 	activate_sprite(swim_sprite)
 	play(swim_animation)
+
+func make_hungry():
+	for sprite in sprites:
+		if sprite is HungerSprite:
+			sprite.make_hungry()
+
+func satisfy():
+	for sprite in sprites:
+		if sprite is HungerSprite:
+			sprite.satisfy()

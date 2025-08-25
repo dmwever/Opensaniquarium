@@ -1,6 +1,8 @@
 shader_type canvas_item;
+varying vec4 modulate;
 
 void vertex() {
+	modulate = COLOR;
 	// Called for every vertex the material is visible on.
 }
 
@@ -12,6 +14,7 @@ void fragment() {
     }
 	
 	COLOR.a = alpha.a;
+	COLOR = modulate * COLOR;
 }
 
 //void light() {

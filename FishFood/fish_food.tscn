@@ -317,15 +317,18 @@ animations = [{
 
 [node name="FishFood" type="RigidBody2D" node_paths=PackedStringArray("pellet")]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 8
 mass = 0.01
 gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
 linear_velocity = Vector2(0, 40)
 script = ExtResource("1_fw3ph")
 pellet = NodePath("Pellet")
 food_type = "basic"
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_gbbr6")]
+collision_layer = 2
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_ei15q")
@@ -334,9 +337,11 @@ shape = SubResource("CircleShape2D_ei15q")
 material = SubResource("ShaderMaterial_h7vfr")
 sprite_frames = SubResource("SpriteFrames_k2nh8")
 animation = &"basic"
-frame_progress = 0.28243
+frame_progress = 0.71604
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dwsv7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 
 [editable path="Hurtbox"]

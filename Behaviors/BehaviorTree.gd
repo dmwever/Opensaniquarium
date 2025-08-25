@@ -43,7 +43,8 @@ func on_child_transition(behavior, new_behavior_name):
 		current_behavior.exit()
 	
 	current_behavior = new_behavior
-	
+	print("From:", behaviors.find_key(behavior))
+	print("To:", new_behavior_name)
 	new_behavior.enter()
 
 #transition that preserves current behavior and returns to it
@@ -60,5 +61,7 @@ func on_child_transition_callback(behavior, new_behavior_name):
 	
 	current_behavior = new_behavior
 	
+	print("From:", behaviors.find_key(behavior))
+	print("To:", new_behavior_name)
 	var old_behavior_name = behaviors.find_key(behavior)
 	new_behavior.enter_callback(old_behavior_name)

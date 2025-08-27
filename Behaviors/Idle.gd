@@ -3,7 +3,7 @@ class_name Idle
 
 @export var character: CharacterBody2D
 @export var animationPlayer: MultispriteFishimationPlayer
-@export var move_speed: float = 20.0
+@export var move_speed: float
 
 var move_direction: Vector2 = Vector2.ZERO
 var idle_timer: Timer = Timer.new()

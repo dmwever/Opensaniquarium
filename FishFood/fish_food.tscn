@@ -1,9 +1,10 @@
-[gd_scene load_steps=49 format=3 uid="uid://benojx2dma4w2"]
+[gd_scene load_steps=50 format=3 uid="uid://benojx2dma4w2"]
 
 [ext_resource type="Shader" path="res://NoMask.gdshader" id="1_anki5"]
 [ext_resource type="Script" path="res://FishFood/fish_food.gd" id="1_fw3ph"]
 [ext_resource type="Texture2D" uid="uid://7fq27vhdborv" path="res://img/food.jpg" id="2_yn2c0"]
 [ext_resource type="PackedScene" uid="uid://mqek1b7bqwit" path="res://Hitboxes/hurtbox.tscn" id="3_gbbr6"]
+[ext_resource type="Script" path="res://Attributes/Eatable.gd" id="5_qbcbh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei15q"]
 
@@ -315,7 +316,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwsv7"]
 
-[node name="FishFood" type="RigidBody2D" node_paths=PackedStringArray("pellet")]
+[node name="FishFood" type="RigidBody2D" node_paths=PackedStringArray("pellet", "eatable")]
 collision_layer = 2
 collision_mask = 8
 mass = 0.01
@@ -326,6 +327,7 @@ linear_velocity = Vector2(0, 40)
 script = ExtResource("1_fw3ph")
 pellet = NodePath("Pellet")
 food_type = "basic"
+eatable = NodePath("Eatable")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_gbbr6")]
 collision_layer = 2
@@ -342,6 +344,13 @@ frame_progress = 0.71604
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dwsv7")
 
+[node name="Eatable" type="Node" parent="." node_paths=PackedStringArray("food")]
+script = ExtResource("5_qbcbh")
+food = NodePath("..")
+feed_value = 1
+food_name = "FishFood"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]

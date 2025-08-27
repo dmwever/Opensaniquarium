@@ -15,6 +15,10 @@ run/main_scene="res://tank.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBus="*res://Autoload/signal_bus.gd"
+
 [dotnet]
 
 project/assembly_name="Opensaniquarium"

@@ -3,7 +3,7 @@ class_name Wander
 
 @export var character: CharacterBody2D
 @export var animationPlayer: MultispriteFishimationPlayer
-@export var move_speed: float = 50.0
+@export var move_speed: float
 
 var move_direction: Vector2 = Vector2.ZERO
 var wander_timer: Timer = Timer.new()

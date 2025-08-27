@@ -1,7 +1,9 @@
 extends RigidBody2D
+class_name FishFood
 
 @export var pellet: AnimatedSprite2D
 @export var food_type: String
+@export var eatable: Eatable
 
 var despawning: bool = false
 var vanish: float = 1
@@ -21,7 +23,9 @@ func _physics_process(_delta: float):
 
 
 func _on_hurtbox_area_entered(_area):
-	queue_free()
+	var eater: Node2D = _area.get_parent()
+	if (eater.find_child("Feedable").can_eat(eatable)):
+		SignalBus.emit_signal("be_eaten", eater)
 
 
 func _on_body_entered(_body):

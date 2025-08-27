@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ise50bjb83lg"]
+[gd_scene load_steps=34 format=3 uid="uid://ise50bjb83lg"]
 
 [ext_resource type="Script" path="res://Fish/Fish.gd" id="1_ts5h6"]
 [ext_resource type="Shader" path="res://Guppy.gdshader" id="2_c3eog"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" path="res://Behaviors/Idle.gd" id="11_kbpkc"]
 [ext_resource type="Script" path="res://Behaviors/Turn.gd" id="12_v0ge2"]
 [ext_resource type="Script" path="res://Behaviors/Wander.gd" id="13_hdsmo"]
+[ext_resource type="Script" path="res://Behaviors/Chase.gd" id="17_77hii"]
+[ext_resource type="Script" path="res://Attributes/Eatable.gd" id="18_nqruc"]
+[ext_resource type="Script" path="res://Attributes/Feedable.gd" id="19_rbe5y"]
 
 [sub_resource type="Animation" id="Animation_okc4n"]
 length = 0.001
@@ -187,10 +190,11 @@ radius = 17.1172
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhr3e"]
 radius = 17.0
 
-[node name="Guppy" type="CharacterBody2D" node_paths=PackedStringArray("behavior_tree")]
+[node name="Guppy" type="CharacterBody2D" node_paths=PackedStringArray("behavior_tree", "feedable")]
 collision_mask = 8
 script = ExtResource("1_ts5h6")
 behavior_tree = NodePath("BehaviorTree")
+feedable = NodePath("Feedable")
 
 [node name="GuppyAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("swim_sprite", "turn_sprite")]
 deterministic = true
@@ -202,13 +206,6 @@ swim_sprite = NodePath("../Swim")
 turn_sprite = NodePath("../Turn")
 swim_animation = "swim"
 turn_animation = "turn"
-
-[node name="HungerTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 30.0
-one_shot = true
-autostart = true
-script = ExtResource("7_xnxa1")
 
 [node name="Swim" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ugsgk")
@@ -244,6 +241,7 @@ initial_behavior = NodePath("Idle")
 script = ExtResource("11_kbpkc")
 character = NodePath("../..")
 animationPlayer = NodePath("../../GuppyAnimationPlayer")
+move_speed = 20.0
 
 [node name="Turn" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("12_v0ge2")
@@ -253,10 +251,33 @@ animationPlayer = NodePath("../../GuppyAnimationPlayer")
 script = ExtResource("13_hdsmo")
 character = NodePath("../..")
 animationPlayer = NodePath("../../GuppyAnimationPlayer")
+move_speed = 50.0
+
+[node name="Chase" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("character")]
+script = ExtResource("17_77hii")
+character = NodePath("../..")
+move_speed = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_qhr3e")
+
+[node name="Eatable" type="Node" parent="." node_paths=PackedStringArray("food")]
+script = ExtResource("18_nqruc")
+food = NodePath("..")
+feed_value = 1
+
+[node name="Feedable" type="Node" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("19_rbe5y")
+character = NodePath("..")
+eatables = Array[String](["FishFood"])
+
+[node name="HungerTimer" type="Timer" parent="Feedable"]
+process_callback = 0
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = ExtResource("7_xnxa1")
 
 [connection signal="animation_finished" from="GuppyAnimationPlayer" to="BehaviorTree/Turn" method="_on_guppy_animation_player_animation_finished"]
 

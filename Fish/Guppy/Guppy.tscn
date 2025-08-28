@@ -262,10 +262,10 @@ move_speed = 50.0
 visible = false
 shape = SubResource("CircleShape2D_qhr3e")
 
-[node name="Eatable" type="Node" parent="." node_paths=PackedStringArray("food")]
+[node name="Eatable" type="Node" parent="."]
 script = ExtResource("18_nqruc")
-food = NodePath("..")
 feed_value = 1
+food_name = "Guppy"
 
 [node name="Feedable" type="Node" parent="." node_paths=PackedStringArray("character")]
 script = ExtResource("19_rbe5y")

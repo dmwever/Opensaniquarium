@@ -1,7 +1,6 @@
 extends Node
 class_name Eatable
 
-@export var food: Node2D
 @export var feed_value: int
 @export var food_name: String
 
@@ -9,6 +8,6 @@ class_name Eatable
 func _ready():
 	SignalBus.connect("be_eaten", be_eaten)
 
-func be_eaten(eater):
+func be_eaten(eater, food):
 	eater.feed(feed_value)
 	food.queue_free()

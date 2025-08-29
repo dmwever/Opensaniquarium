@@ -3,16 +3,19 @@ class_name MultispriteFishimationPlayer
 
 @export var swim_sprite: HungerSprite
 @export var turn_sprite: HungerSprite
+@export var eat_sprite: HungerSprite
 
 @export var swim_animation: String
 @export var turn_animation: String
+@export var eat_animation: String
 
 var sprites: Array[Sprite2D] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprites = [
 		swim_sprite,
-		turn_sprite
+		turn_sprite,
+		eat_sprite
 	]
 	activate_sprite(swim_sprite)
 	play(swim_animation)
@@ -35,6 +38,14 @@ func turn():
 func end_turn():
 	for sprite in sprites:
 		sprite.flip_h = !sprite.flip_h
+	activate_sprite(swim_sprite)
+	play(swim_animation)
+
+func eat():
+	activate_sprite(eat_sprite)
+	play(eat_animation)
+
+func end_eat():
 	activate_sprite(swim_sprite)
 	play(swim_animation)
 

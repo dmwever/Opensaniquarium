@@ -12,7 +12,7 @@ void fragment() {
     if(alpha.r <= 0.1 && alpha.g <= 0.1 && alpha.b <= 0.1) {
         alpha.a = 0.0;
     }
-	
+
 	COLOR.a = alpha.a;
 	COLOR = modulate * COLOR;
 }

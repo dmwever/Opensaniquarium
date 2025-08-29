@@ -13,7 +13,7 @@ void fragment() {
     if(maskchart.r <= 0.1 && maskchart.g <= 0.1 && maskchart.b <= 0.1) {
         alpha.a = 0.0;
     }
-	
+
 	COLOR.a = alpha.a;
 }
 //void light() {

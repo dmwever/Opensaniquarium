@@ -13,6 +13,9 @@ func enter_callback(_behavior_name: String):
 func exit():
 	pass
 
+func exit_callback(_behavior_name: String):
+	pass
+
 func update(_delta: float):
 	pass
 

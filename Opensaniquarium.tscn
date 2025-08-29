@@ -1,8 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cvb5nsywjj0bl"]
 
-[ext_resource type="Shader" path="res://Opensaniquarium.gdshader" id="1_8rntl"]
+[ext_resource type="Shader" uid="uid://cae1wivu6po8" path="res://Opensaniquarium.gdshader" id="1_8rntl"]
 [ext_resource type="Texture2D" uid="uid://b27paseo5elp4" path="res://img/smallswim.png" id="2_ga7ph"]
-[ext_resource type="Script" path="res://SmallMove.gd" id="3_wo1mb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knkdo"]
 shader = ExtResource("1_8rntl")
@@ -85,6 +84,9 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="Resource" id="Resource_i6w6f"]
+metadata/__load_path__ = "res://SmallMove.gd"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4tvs"]
 radius = 9.0
 height = 24.0
@@ -97,7 +99,7 @@ height = 24.0
 material = SubResource("ShaderMaterial_knkdo")
 sprite_frames = SubResource("SpriteFrames_voi3d")
 frame_progress = 0.741459
-script = ExtResource("3_wo1mb")
+script = SubResource("Resource_i6w6f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GuppySmall"]
 position = Vector2(-5, 1)

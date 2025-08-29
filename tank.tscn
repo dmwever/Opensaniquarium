@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp8v0d3y43lre"]
+[gd_scene load_steps=6 format=3 uid="uid://cp8v0d3y43lre"]
 
 [ext_resource type="Texture2D" uid="uid://dyss36imqllox" path="res://img/aquarium1.jpg" id="1_hgikc"]
-[ext_resource type="Script" path="res://tank.gd" id="1_qo2ly"]
+[ext_resource type="Script" uid="uid://b5j4wem2cffer" path="res://tank.gd" id="1_qo2ly"]
 [ext_resource type="Texture2D" uid="uid://cxd4qt5rfmxk3" path="res://img/menubar.jpg" id="2_avx82"]
-[ext_resource type="PackedScene" uid="uid://benojx2dma4w2" path="res://FishFood/fish_food.tscn" id="4_ipvwg"]
-[ext_resource type="Script" path="res://FishFoodZone.gd" id="4_nrpw4"]
+[ext_resource type="Script" uid="uid://bs56jqosasuas" path="res://FishFoodZone.gd" id="4_nrpw4"]
 [ext_resource type="PackedScene" uid="uid://ise50bjb83lg" path="res://Fish/Guppy/Guppy.tscn" id="4_pfb2w"]
 
 [node name="Tank" type="Node2D"]
@@ -20,9 +19,6 @@ layout_mode = 0
 offset_right = 297.0
 offset_bottom = 114.0
 texture = ExtResource("2_avx82")
-
-[node name="FishFood" parent="." instance=ExtResource("4_ipvwg")]
-position = Vector2(318, 274)
 
 [node name="TankBounds" type="StaticBody2D" parent="." node_paths=PackedStringArray("tank")]
 collision_layer = 11

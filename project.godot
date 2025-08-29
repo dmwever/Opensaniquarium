@@ -12,12 +12,14 @@ config_version=5
 
 config/name="Opensaniquarium"
 run/main_scene="res://tank.tscn"
-config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SignalBus="*res://Autoload/signal_bus.gd"
+Global="*res://Autoload/global.gd"
+Utilities="*res://util.gd"
 
 [dotnet]
 

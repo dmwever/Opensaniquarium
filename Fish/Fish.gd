@@ -3,44 +3,27 @@ class_name Fish
 
 @export var behavior_tree: BehaviorTree
 @export var feedable: Feedable
+@export var movement_speed: float
 
 @onready var fishimation_player: MultispriteFishimationPlayer = $GuppyAnimationPlayer
 
-var hunger: Util.HungerState = Util.HungerState.SATISFIED
 var target
+var movement_vector
 
 func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	move_and_slide()
-	detect_food()
+	velocity.x = movement_speed * movement_vector.x * 1.1
+	velocity.y = movement_speed * movement_vector.y
 	if feedable.hungry():
 		fishimation_player.make_hungry()
+		velocity.clampf(0, 50 * 1.2)
 	else:
 		fishimation_player.satisfy()
-
-func detect_food():
-	var food: Array
-	food = get_parent().get_entities().filter(food_filter)
-	if food.size() != 0:
-		target = closest_food_location(food)
-		behavior_tree.transition("chase")
-
-func food_filter(food):
-	return food is FishFood
-
-func closest_food_location(food: Array):
-	var closest_food_vector: Vector2 = Vector2.INF
-	var closest_food
-	for choice in food:
-		if choice.global_position - global_position < closest_food_vector:
-			closest_food_vector = choice.global_position
-			closest_food = choice
-	if closest_food_vector == Vector2.INF:
-		return null
-	return closest_food
+		velocity.clampf(0, 50)
+	move_and_slide()
 
 func feed(food_value):
 	feedable.feed(food_value)

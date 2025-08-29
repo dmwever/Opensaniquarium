@@ -1,12 +1,12 @@
 [gd_scene load_steps=52 format=3 uid="uid://benojx2dma4w2"]
 
-[ext_resource type="Shader" path="res://NoMask.gdshader" id="1_anki5"]
-[ext_resource type="Script" path="res://FishFood/fish_food.gd" id="1_fw3ph"]
+[ext_resource type="Shader" uid="uid://b0348xtogoqtl" path="res://NoMask.gdshader" id="1_anki5"]
+[ext_resource type="Script" uid="uid://c1sdbwfvgpo8u" path="res://FishFood/fish_food.gd" id="1_fw3ph"]
 [ext_resource type="Texture2D" uid="uid://7fq27vhdborv" path="res://img/food.jpg" id="2_yn2c0"]
 [ext_resource type="PackedScene" uid="uid://mqek1b7bqwit" path="res://Hitboxes/hurtbox.tscn" id="3_gbbr6"]
-[ext_resource type="Script" path="res://Attributes/Eatable.gd" id="5_qbcbh"]
-[ext_resource type="Script" path="res://Attributes/HasGravity.gd" id="6_0q8pl"]
-[ext_resource type="Script" path="res://Attributes/DespawnAtBottom.gd" id="7_n8kqb"]
+[ext_resource type="Script" uid="uid://du48st6c04ash" path="res://Attributes/Eatable.gd" id="5_qbcbh"]
+[ext_resource type="Script" uid="uid://c3niagtab3uec" path="res://Attributes/HasGravity.gd" id="6_0q8pl"]
+[ext_resource type="Script" uid="uid://carirp4poagq6" path="res://Attributes/DespawnAtBottom.gd" id="7_n8kqb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ei15q"]
 
@@ -323,8 +323,8 @@ collision_layer = 2
 collision_mask = 8
 mass = 0.01
 gravity_scale = 0.0
-max_contacts_reported = 1
 contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_fw3ph")
 pellet = NodePath("Pellet")
 food_type = "basic"

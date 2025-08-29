@@ -19,8 +19,10 @@ func _process(_delta):
 func check_hunger():
 	if time_left <= 0:
 		return Util.HungerState.STARVED
-	if time_left < 9:
+	if time_left <= 3:
+		return Util.HungerState.DESPERATE
+	if time_left < 8.5:
 		return Util.HungerState.HUNGRY
-	if time_left < 15:
+	if time_left < 14:
 		return Util.HungerState.PECKISH
 	return Util.HungerState.SATISFIED

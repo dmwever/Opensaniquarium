@@ -4,6 +4,9 @@ class_name BehaviorTree
 @export var initial_behavior: Behavior
 
 var current_behavior: Behavior
+var current_behavior_name: String:
+	get:
+		return behaviors.find_key(current_behavior)
 var behaviors: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +20,7 @@ func _ready():
 	if initial_behavior:
 		initial_behavior.enter()
 		current_behavior = initial_behavior
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,6 +33,9 @@ func _physics_process(delta):
 
 func transition(new_behavior_name):
 	current_behavior.transition.emit(current_behavior, new_behavior_name)
+
+func transition_callback(new_behavior_name):
+	current_behavior.transition_callback.emit(current_behavior, new_behavior_name)
 
 #transition that ends current behavior and enters new behavior
 func on_child_transition(behavior, new_behavior_name):
@@ -57,7 +64,7 @@ func on_child_transition_callback(behavior, new_behavior_name):
 		return
 	
 	if current_behavior:
-		current_behavior.exit_callback()
+		current_behavior.exit()
 	
 	current_behavior = new_behavior
 	

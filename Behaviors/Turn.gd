@@ -10,9 +10,6 @@ func enter_callback(behavior: String):
 
 func exit():
 	animationPlayer.end_turn()
-
-func exit_callback():
-	animationPlayer.end_turn()
 	
 func physics_update(_delta):
 	animationPlayer.turn()

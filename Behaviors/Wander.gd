@@ -17,17 +17,11 @@ func enter():
 	wander()
 
 func enter_callback(_previous_behavior):
-	if (wander_timer.time_left == 0):
-		wander()
-		return
 	wander_timer.start()
 
 func exit():
 	animationPlayer.speed_scale = 1.0
 	wander_timer.stop()
-
-func exit_callback():
-	pass
 	
 func physics_update(_delta):
 	if character:
@@ -38,17 +32,16 @@ func physics_update(_delta):
 func wander():
 	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	wander_timer.wait_time = randf_range(0.1, 3)
-	wander_timer.start()
 	try_turn()
 
  ## callback transition to [Turn]
 func try_turn():
 	if move_direction.x <= 0 && !animationPlayer.facing_left():
-		wander_timer.stop()
 		transition_callback.emit(self, "turn")
 	if move_direction.x > 0 && animationPlayer.facing_left():
-		wander_timer.stop()
 		transition_callback.emit(self, "turn")
+	else:
+		wander_timer.start()
 	
 	
 func on_wander_timeout():

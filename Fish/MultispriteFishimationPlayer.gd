@@ -58,3 +58,8 @@ func satisfy():
 	for sprite in sprites:
 		if sprite is HungerSprite:
 			sprite.satisfy()
+
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	if anim_name == turn_animation:
+		end_turn() # Replace with function body.

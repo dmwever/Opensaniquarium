@@ -23,7 +23,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if hungry() && character.target == null:
+	if hungry():
 		detect_food()
 	if (hunger_timer.check_hunger() == Util.HungerState.PECKISH):
 		if peckish_search.is_stopped():
@@ -61,8 +61,10 @@ func detect_food():
 	var food: Array
 	food = Global.get_tank_entities().filter(food_filter)
 	if food.size() != 0:
-		character.target = closest_food_location(food)
-		behavior_tree.transition_callback("chase")
+		var try_target = closest_food_location(food)
+		if try_target != null && try_target != character.target:
+			character.target = try_target
+			behavior_tree.transition_callback("chase")
 
 func food_filter(food):
 	return food is FishFood

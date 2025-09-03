@@ -21,6 +21,11 @@ SignalBus="*res://Autoload/signal_bus.gd"
 Global="*res://Autoload/global.gd"
 Utilities="*res://util.gd"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=480
+
 [dotnet]
 
 project/assembly_name="Opensaniquarium"

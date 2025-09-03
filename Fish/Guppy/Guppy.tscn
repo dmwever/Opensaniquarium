@@ -326,7 +326,6 @@ material = SubResource("ShaderMaterial_gcanx")
 texture = ExtResource("10_1330p")
 hframes = 10
 vframes = 5
-frame = 9
 script = ExtResource("7_wu202")
 hunger_sprite_img = ExtResource("11_2fl01")
 satisfied_sprite_img = ExtResource("10_1330p")
@@ -344,7 +343,6 @@ initial_behavior = NodePath("Idle")
 script = ExtResource("11_kbpkc")
 character = NodePath("../..")
 animationPlayer = NodePath("../../GuppyAnimationPlayer")
-move_speed = 20.0
 
 [node name="Turn" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("12_v0ge2")
@@ -359,7 +357,6 @@ move_speed = 50.0
 [node name="Chase" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("character", "animationPlayer")]
 script = ExtResource("17_77hii")
 character = NodePath("../..")
-move_speed = 50.0
 animationPlayer = NodePath("../../GuppyAnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -384,6 +381,6 @@ one_shot = true
 autostart = true
 script = ExtResource("7_xnxa1")
 
-[connection signal="animation_finished" from="GuppyAnimationPlayer" to="BehaviorTree/Turn" method="_on_guppy_animation_player_animation_finished"]
+[connection signal="animation_finished" from="GuppyAnimationPlayer" to="GuppyAnimationPlayer" method="_on_animation_finished"]
 
 [editable path="Hurtbox"]

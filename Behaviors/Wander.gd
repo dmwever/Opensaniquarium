@@ -37,12 +37,17 @@ func wander():
  ## callback transition to [Turn]
 func try_turn():
 	if move_direction.x <= 0 && !animationPlayer.facing_left():
-		transition_callback.emit(self, "turn")
+		animationPlayer.turn()
 	if move_direction.x > 0 && animationPlayer.facing_left():
-		transition_callback.emit(self, "turn")
+		animationPlayer.turn()
 	else:
 		wander_timer.start()
 	
 	
 func on_wander_timeout():
 	transition.emit(self, "idle")
+
+
+func _on_guppy_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == animationPlayer.turn_animation:
+		animationPlayer.end_turn()

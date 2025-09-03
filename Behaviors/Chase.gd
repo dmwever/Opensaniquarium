@@ -5,7 +5,7 @@ class_name Chase
 @export var move_speed: float
 @export var animationPlayer: MultispriteFishimationPlayer
 
-var acceleration:= 1000
+var acceleration:= 250
 var goal_behavior: String
 signal reach_goal
 
@@ -13,7 +13,7 @@ signal reach_goal
 func _ready():
 	reach_goal.connect(on_reach_goal)
 
-func _physics_process(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	if character.target != null:
 		chase_target(delta)
 	else:
@@ -31,16 +31,22 @@ func exit():
 	animationPlayer.speed_scale = 1.0
 
 func chase_target(delta):
+	character.velocity = character.velocity.move_toward((character.target.global_position - character.global_position) * 100, acceleration * delta)
+	#character.velocity += ((character.target.global_position - character.global_position) * Vector2(1.2, 1)).normalized() * acceleration * delta
+	print (character.velocity)
 	try_turn()
-	character.velocity += (character.target.global_position - character.global_position).normalized() * acceleration * delta
-	character.velocity = character.velocity.limit_length(move_speed)
 
  ## callback transition to [Turn]
 func try_turn():
 	if character.velocity.x <= 0 && !animationPlayer.facing_left():
-		transition_callback.emit(self, "turn")
+		animationPlayer.turn()
 	if character.velocity.x > 0 && animationPlayer.facing_left():
-		transition_callback.emit(self, "turn")
+		animationPlayer.turn()
 
 func on_reach_goal():
 	transition_callback.emit(self, goal_behavior)
+
+
+func _on_guppy_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == animationPlayer.turn_animation:
+		animationPlayer.end_turn()

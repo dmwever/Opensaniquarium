@@ -353,6 +353,7 @@ food_name = "FishFood"
 
 [node name="HasGravity" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("6_0q8pl")
+linear_gravity_speed = 80.0
 entity = NodePath("..")
 
 [node name="DespawnAtBottom" type="Node" parent="." node_paths=PackedStringArray("sprite", "entity")]

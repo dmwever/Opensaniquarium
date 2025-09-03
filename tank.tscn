@@ -32,3 +32,8 @@ polygon = PackedVector2Array(24, 120, 616, 120, 616, 432, 24, 432)
 
 [node name="Guppy" parent="." instance=ExtResource("4_pfb2w")]
 position = Vector2(280, 269)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+limit_left = 0
+limit_top = 0

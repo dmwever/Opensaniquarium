@@ -9,6 +9,7 @@ class_name MultispriteFishimationPlayer
 @export var turn_animation: String
 @export var eat_animation: String
 
+var growth_tag: String = ""
 var sprites: Array[Sprite2D] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +19,7 @@ func _ready():
 		eat_sprite
 	]
 	activate_sprite(swim_sprite)
-	play(swim_animation)
+	play(swim_animation + growth_tag)
 
 func activate_sprite(new_sprite: Sprite2D) -> void:
 	assert(new_sprite != null)
@@ -33,21 +34,21 @@ func facing_left()-> bool:
 
 func turn():
 	activate_sprite(turn_sprite)
-	play(turn_animation)
+	play(turn_animation + growth_tag)
 	
 func end_turn():
 	for sprite in sprites:
 		sprite.flip_h = !sprite.flip_h
 	activate_sprite(swim_sprite)
-	play(swim_animation)
+	play(swim_animation + growth_tag)
 
 func eat():
 	activate_sprite(eat_sprite)
-	play(eat_animation)
+	play(eat_animation + growth_tag)
 
 func end_eat():
 	activate_sprite(swim_sprite)
-	play(swim_animation)
+	play(swim_animation + growth_tag)
 
 func make_hungry():
 	for sprite in sprites:
@@ -63,3 +64,5 @@ func satisfy():
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == turn_animation:
 		end_turn() # Replace with function body.
+	if anim_name == eat_animation:
+		end_eat() # Replace with function body.

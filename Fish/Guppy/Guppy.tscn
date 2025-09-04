@@ -1,6 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://ise50bjb83lg"]
+[gd_scene load_steps=43 format=3 uid="uid://ise50bjb83lg"]
 
-[ext_resource type="Script" uid="uid://buga1hq1eyxhs" path="res://Fish/Fish.gd" id="1_ts5h6"]
+[ext_resource type="Script" uid="uid://biftxi8uoadp" path="res://Fish/Guppy/Guppy.gd" id="1_us5sj"]
 [ext_resource type="Shader" uid="uid://b1alny8d4dx7k" path="res://Guppy.gdshader" id="2_c3eog"]
 [ext_resource type="Texture2D" uid="uid://dw5m6o34qv58o" path="res://img/smallswim_.jpg" id="3_dyiri"]
 [ext_resource type="Texture2D" uid="uid://w5wb6hcf5gj6" path="res://img/smalleat_.jpg" id="4_5gk5l"]
@@ -17,11 +17,12 @@
 [ext_resource type="Script" uid="uid://cvwxhbloqcsea" path="res://Behaviors/BehaviorTree.gd" id="10_gj3v7"]
 [ext_resource type="Texture2D" uid="uid://pjl36efqsg76" path="res://img/hungryturn.jpg" id="11_2fl01"]
 [ext_resource type="Script" uid="uid://bsya5xqirh7nv" path="res://Behaviors/Idle.gd" id="11_kbpkc"]
-[ext_resource type="Script" uid="uid://dv6c8rhbiuel0" path="res://Behaviors/Turn.gd" id="12_v0ge2"]
 [ext_resource type="Script" uid="uid://cfoa7uhv8ive2" path="res://Behaviors/Wander.gd" id="13_hdsmo"]
 [ext_resource type="Script" uid="uid://4d00gjrrwmhi" path="res://Behaviors/Chase.gd" id="17_77hii"]
 [ext_resource type="Script" uid="uid://du48st6c04ash" path="res://Attributes/Eatable.gd" id="18_nqruc"]
 [ext_resource type="Script" uid="uid://d2mqm7ln4e3r4" path="res://Attributes/Feedable.gd" id="19_rbe5y"]
+[ext_resource type="Script" uid="uid://cgta8kusg8ygn" path="res://Behaviors/Eat.gd" id="19_s8jnd"]
+[ext_resource type="Script" uid="uid://cxwn2n4i8xqdy" path="res://Attributes/Growable.gd" id="23_us5sj"]
 
 [sub_resource type="Animation" id="Animation_okc4n"]
 length = 0.001
@@ -281,9 +282,10 @@ radius = 17.1172
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhr3e"]
 radius = 17.0
 
-[node name="Guppy" type="CharacterBody2D" node_paths=PackedStringArray("behavior_tree", "feedable")]
+[node name="Guppy" type="CharacterBody2D" node_paths=PackedStringArray("growable", "behavior_tree", "feedable")]
 collision_mask = 8
-script = ExtResource("1_ts5h6")
+script = ExtResource("1_us5sj")
+growable = NodePath("Growable")
 behavior_tree = NodePath("BehaviorTree")
 feedable = NodePath("Feedable")
 
@@ -343,21 +345,23 @@ initial_behavior = NodePath("Idle")
 script = ExtResource("11_kbpkc")
 character = NodePath("../..")
 animationPlayer = NodePath("../../GuppyAnimationPlayer")
-
-[node name="Turn" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("12_v0ge2")
-animationPlayer = NodePath("../../GuppyAnimationPlayer")
+move_speed = 20.0
 
 [node name="Wander" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("character", "animationPlayer")]
 script = ExtResource("13_hdsmo")
 character = NodePath("../..")
 animationPlayer = NodePath("../../GuppyAnimationPlayer")
-move_speed = 50.0
+move_speed = 60.0
 
 [node name="Chase" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("character", "animationPlayer")]
 script = ExtResource("17_77hii")
 character = NodePath("../..")
 animationPlayer = NodePath("../../GuppyAnimationPlayer")
+
+[node name="Eat" type="Node" parent="BehaviorTree" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("19_s8jnd")
+animationPlayer = NodePath("../../GuppyAnimationPlayer")
+metadata/_custom_type_script = "uid://cgta8kusg8ygn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -380,6 +384,10 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 script = ExtResource("7_xnxa1")
+
+[node name="Growable" type="Node" parent="."]
+script = ExtResource("23_us5sj")
+metadata/_custom_type_script = "uid://cxwn2n4i8xqdy"
 
 [connection signal="animation_finished" from="GuppyAnimationPlayer" to="GuppyAnimationPlayer" method="_on_animation_finished"]
 

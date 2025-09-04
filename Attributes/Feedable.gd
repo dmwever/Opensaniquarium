@@ -3,7 +3,6 @@ class_name Feedable
 
 @export var character: CharacterBody2D
 @export var eatables: Array[String]
-@export var feed_until_grow: int
 @export var behavior_tree: BehaviorTree
 
 @onready var hunger_timer: HungerTimer = $HungerTimer
@@ -39,7 +38,8 @@ func can_eat(food: Eatable):
 
 func feed(food_level: int):
 	hunger_timer.start(hunger_timer.time_left + calculate_hunger_timer_add(food_level))
-	feed_until_grow -= food_level
+	if get_parent().has_node("Growable"):
+		get_parent().grow(food_level)
 
 func calculate_hunger_timer_add(food_level: int):
 	var hunger_timer_add: float = 8.0

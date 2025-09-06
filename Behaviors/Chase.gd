@@ -32,8 +32,6 @@ func exit():
 
 func chase_target(delta):
 	character.velocity = character.velocity.move_toward((character.target.global_position - character.global_position) * 100, acceleration * delta)
-	#character.velocity += ((character.target.global_position - character.global_position) * Vector2(1.2, 1)).normalized() * acceleration * delta
-	print (character.velocity)
 	try_turn()
 
  ## callback transition to [Turn]

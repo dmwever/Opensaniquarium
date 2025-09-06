@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ise50bjb83lg"]
+[gd_scene load_steps=45 format=3 uid="uid://ise50bjb83lg"]
 
 [ext_resource type="Script" uid="uid://biftxi8uoadp" path="res://Fish/Guppy/Guppy.gd" id="1_us5sj"]
 [ext_resource type="Shader" uid="uid://b1alny8d4dx7k" path="res://Guppy.gdshader" id="2_c3eog"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" uid="uid://d2mqm7ln4e3r4" path="res://Attributes/Feedable.gd" id="19_rbe5y"]
 [ext_resource type="Script" uid="uid://cgta8kusg8ygn" path="res://Behaviors/Eat.gd" id="19_s8jnd"]
 [ext_resource type="Script" uid="uid://cxwn2n4i8xqdy" path="res://Attributes/Growable.gd" id="23_us5sj"]
+[ext_resource type="Script" uid="uid://c4t3xtvmf353e" path="res://Attributes/Growth Stages/BaseFish.gd" id="24_vfwjk"]
+[ext_resource type="Script" uid="uid://diywnexabf8dk" path="res://Attributes/Growth Stages/MediumGuppy.gd" id="25_23ilr"]
 
 [sub_resource type="Animation" id="Animation_okc4n"]
 length = 0.001
@@ -318,6 +320,7 @@ position = Vector2(1, -1)
 texture = ExtResource("6_e006e")
 hframes = 10
 vframes = 5
+frame = 10
 script = ExtResource("7_wu202")
 hunger_sprite_img = ExtResource("8_bfltb")
 satisfied_sprite_img = ExtResource("6_e006e")
@@ -377,6 +380,7 @@ script = ExtResource("19_rbe5y")
 character = NodePath("..")
 eatables = Array[String](["FishFood"])
 behavior_tree = NodePath("../BehaviorTree")
+starting_hunger_time = 14.0
 
 [node name="HungerTimer" type="Timer" parent="Feedable"]
 process_callback = 0
@@ -385,9 +389,22 @@ one_shot = true
 autostart = true
 script = ExtResource("7_xnxa1")
 
-[node name="Growable" type="Node" parent="."]
+[node name="Growable" type="Node" parent="." node_paths=PackedStringArray("fishimation_player")]
 script = ExtResource("23_us5sj")
+fishimation_player = NodePath("../GuppyAnimationPlayer")
 metadata/_custom_type_script = "uid://cxwn2n4i8xqdy"
+
+[node name="BaseFish" type="Node" parent="Growable"]
+script = ExtResource("24_vfwjk")
+growth_need = 1
+growth_tag = "_medium"
+metadata/_custom_type_script = "uid://c4t3xtvmf353e"
+
+[node name="MediumGuppy" type="Node" parent="Growable"]
+script = ExtResource("25_23ilr")
+growth_need = 1
+growth_tag = "_large"
+metadata/_custom_type_script = "uid://diywnexabf8dk"
 
 [connection signal="animation_finished" from="GuppyAnimationPlayer" to="GuppyAnimationPlayer" method="_on_animation_finished"]
 

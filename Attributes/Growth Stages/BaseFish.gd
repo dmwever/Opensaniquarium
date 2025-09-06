@@ -1,0 +1,2 @@
+extends GrowthStage
+class_name BaseFish

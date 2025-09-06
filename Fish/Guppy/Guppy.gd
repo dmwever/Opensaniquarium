@@ -5,11 +5,6 @@ class_name Guppy
 
 @onready var fishimation_player: MultispriteFishimationPlayer = $GuppyAnimationPlayer
 
-signal grow_guppy
-
-func _ready() -> void:
-	grow_guppy.connect(on_guppy_grow)
-
 	# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	velocity = velocity.limit_length(70)
@@ -22,7 +17,3 @@ func _physics_process(_delta):
 
 func grow(growth_value):
 	growable.grow(growth_value)
-
-func on_guppy_grow(growth_stage) -> void:
-	if growth_stage == 1: #medium
-		fishimation_player.growth_tag = "_medium"

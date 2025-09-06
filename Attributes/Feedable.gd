@@ -4,14 +4,14 @@ class_name Feedable
 @export var character: CharacterBody2D
 @export var eatables: Array[String]
 @export var behavior_tree: BehaviorTree
+@export var starting_hunger_time: float
 
 @onready var hunger_timer: HungerTimer = $HungerTimer
 
 var peckish_search: Timer
-var foods: Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hunger_timer.wait_time = 22
+	hunger_timer.wait_time = starting_hunger_time
 	hunger_timer.start()
 	hunger_timer.timeout.connect(on_hunger_timeout)
 	peckish_search = Timer.new()

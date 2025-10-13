@@ -30,6 +30,10 @@ window/size/viewport_height=480
 
 project/assembly_name="Opensaniquarium"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdLinter/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
+
 [input]
 
 click={

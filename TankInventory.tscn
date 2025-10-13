@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b45j0uy2yk1ok"]
+
+[ext_resource type="Script" uid="uid://l0ueb8o6xvwy" path="res://tank_inventory.gd" id="1_dsog7"]
+
+[node name="TankInventory" type="Node"]
+script = ExtResource("1_dsog7")
+money = 200
+food_level = 1
+food_limit = 1

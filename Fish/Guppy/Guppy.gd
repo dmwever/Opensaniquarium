@@ -1,5 +1,5 @@
-extends Fish
 class_name Guppy
+extends Fish
 
 @export var growable: Growable
 

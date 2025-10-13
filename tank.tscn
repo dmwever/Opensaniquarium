@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp8v0d3y43lre"]
+[gd_scene load_steps=7 format=3 uid="uid://cp8v0d3y43lre"]
 
 [ext_resource type="Texture2D" uid="uid://dyss36imqllox" path="res://img/aquarium1.jpg" id="1_hgikc"]
 [ext_resource type="Script" uid="uid://b5j4wem2cffer" path="res://tank.gd" id="1_qo2ly"]
 [ext_resource type="Texture2D" uid="uid://cxd4qt5rfmxk3" path="res://img/menubar.jpg" id="2_avx82"]
 [ext_resource type="Script" uid="uid://bs56jqosasuas" path="res://FishFoodZone.gd" id="4_nrpw4"]
 [ext_resource type="PackedScene" uid="uid://ise50bjb83lg" path="res://Fish/Guppy/Guppy.tscn" id="4_pfb2w"]
+[ext_resource type="Script" uid="uid://l0ueb8o6xvwy" path="res://tank_inventory.gd" id="6_i433e"]
 
 [node name="Tank" type="Node2D"]
 script = ExtResource("1_qo2ly")
@@ -20,11 +21,12 @@ offset_right = 297.0
 offset_bottom = 114.0
 texture = ExtResource("2_avx82")
 
-[node name="TankBounds" type="StaticBody2D" parent="." node_paths=PackedStringArray("tank")]
+[node name="TankBounds" type="StaticBody2D" parent="." node_paths=PackedStringArray("tank", "inventory")]
 collision_layer = 11
 collision_mask = 15
 script = ExtResource("4_nrpw4")
 tank = NodePath("..")
+inventory = NodePath("../TankInventory")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TankBounds"]
 build_mode = 1
@@ -35,3 +37,9 @@ position = Vector2(280, 269)
 
 [node name="Guppy2" parent="." instance=ExtResource("4_pfb2w")]
 position = Vector2(232, 240)
+
+[node name="TankInventory" type="Node" parent="."]
+script = ExtResource("6_i433e")
+food_level = 1
+food_limit = 1
+metadata/_custom_type_script = "uid://l0ueb8o6xvwy"

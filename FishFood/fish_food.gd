@@ -1,5 +1,5 @@
-extends RigidBody2D
 class_name FishFood
+extends RigidBody2D
 
 @export var pellet: AnimatedSprite2D
 @export var food_type: String

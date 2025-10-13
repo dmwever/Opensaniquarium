@@ -17,7 +17,7 @@ func grow(growth_amount: int) -> void:
 	stage_growths[stage_number].grow(growth_amount)
 
 func on_growth_event(growth_tag: String):
-	fishimation_player.tag_sprites(growth_tag)
+	fishimation_player.tag_animations(growth_tag)
 	stage_number += 1
 	if stage_number == stage_growths.size():
 		get_parent().remove_child(self)

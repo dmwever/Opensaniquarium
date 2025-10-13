@@ -20,6 +20,14 @@ func _ready():
 	activate_sprite(swim_sprite)
 	play(swim_animation)
 
+func _physics_process(delta: float) -> void:
+	if current_animation == swim_animation:
+		activate_sprite(swim_sprite)
+	if current_animation == turn_animation:
+		activate_sprite(turn_sprite)
+	if current_animation == eat_animation:
+		activate_sprite(eat_sprite)
+
 func activate_sprite(new_sprite: Sprite2D) -> void:
 	assert(new_sprite != null)
 	assert(new_sprite in sprites)
@@ -42,11 +50,9 @@ func end_turn():
 	play(swim_animation)
 
 func eat():
-	activate_sprite(eat_sprite)
 	play(eat_animation)
 
 func end_eat():
-	activate_sprite(swim_sprite)
 	play(swim_animation)
 
 func make_hungry():
@@ -59,7 +65,7 @@ func satisfy():
 		if sprite is HungerSprite:
 			sprite.satisfy()
 
-func tag_sprites(tag: String):
+func tag_animations(tag: String):
 	turn_animation = "turn" + tag
 	swim_animation = "swim" + tag
 	eat_animation = "eat" + tag
